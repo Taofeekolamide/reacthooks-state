@@ -1,34 +1,26 @@
+import { BrowserRouter, Link, Route, Routes } from "react-router-dom"
+import AddTask from "./pages/AddTask"
+import Tasks from "./pages/Tasks"
+import EditTask from "./pages/EditTask"
 import './App.css'
+import { AddTaskContext } from "./context/AddTask"
 import { useState } from "react"
-import { ThemeContext } from "./Context/ThemeContext"
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Header from './components/Header'
-import Dashboard from './pages/Dashboard'
-import About from "./pages/About"
-import SideBar from './components/SideBar'
+import { Tasksed } from "./Data/Tasks"
 
 function App() {
-  const [theme, setTheme] = useState("black")
+  const [tasks, setTasks] = useState(Tasksed)
+  
   return (
     <>
-      <ThemeContext.Provider value={{ theme, setTheme }}>
+      <AddTaskContext.Provider value={{ tasks, setTasks }}>
         <BrowserRouter>
-          <div style={{display: "flex", backgroundColor: theme, color: theme == "black" ? "white" : "black" }}>
-            <SideBar />
-
-            <div className='aside' >
-              <Header />
-
-              <Routes>
-                <Route path="/" element={<Dashboard />} />
-                <Route path="/about" element={<About />} />
-              </Routes>
-            </div>
-
-          </div>
-
+          <Routes>
+            <Route path="/tasks" element={<Tasks />} />
+            <Route path="/addtask" element={<AddTask />} />
+            <Route path="/edit/:id" element={<EditTask />} />
+          </Routes>
         </BrowserRouter>
-      </ThemeContext.Provider>
+      </AddTaskContext.Provider>
 
     </>
   )

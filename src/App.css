@@ -1,4 +1,4 @@
-* {
+/* * {
   margin: 0;
   box-sizing: border-box;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -83,4 +83,56 @@ nav a {
   flex: 1;
   border: none;
   outline: none;
+} */
+
+* {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.main {
+  padding: 40px 0px;
+  width: 600px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  text-align: center;
+}
+
+.add {
+  padding: 6px 25px;
+  border: none;
+  background-color: rgb(61, 61, 255);
+  border-radius: 5px;
+  color: white;
+  width: fit-content;
+}
+
+.tasks {
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #ededf7;
+  
+}
+
+.task {
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  padding: 10px;
+  border-radius: 5px;
+  gap: 7px;
+  margin-bottom: 7px;
+  align-items: center;
+}
+.icon {
+  padding: 3px;
+  border-radius: 4px;
+  background-color: bisque;
+  margin-right: 7px;
+}
+
+.title {
+  flex: 1;
+  text-align: start;
 }
