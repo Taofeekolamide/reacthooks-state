@@ -34,7 +34,9 @@ function Tasks() {
         }
     }
 
-   
+    const EditTask = (item) => {
+        nav(`/edit/${item.id}`)
+    }
 
     return (
         <>
@@ -53,6 +55,7 @@ function Tasks() {
                             </div>
                             <div>
                                 <BiTrash className="icon" onClick={() => deleteTask(item)} />
+                                <BiPencil className="icon" onClick={() => EditTask(item)} />
                             </div>
                         </div>
                     ))}
