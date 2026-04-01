@@ -1,4 +1,4 @@
-import { BiPencil, BiTrash } from "react-icons/bi"
+import { BiCar, BiPencil, BiTrash } from "react-icons/bi"
 import { useContext } from "react"
 import { useNavigate } from "react-router-dom"
 import TaskContext from "../Context/TaskContext"
@@ -37,7 +37,7 @@ function Home() {
                         <span className="title">{item.tasktitle}</span>
                         <div>{item.taskstatus}</div>
                         <BiPencil className="icon" onClick={() => editTask(item)} />
-                        <BiTrash className="icon" onClick={() => deleteTask(item)} />
+                        <BiCar className="icon" onClick={() => deleteTask(item)} />
                     </div>
                 ))}
             </div>
