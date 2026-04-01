@@ -1,29 +1,31 @@
-import { BrowserRouter, Link, Route, Routes } from "react-router-dom"
-import AddTask from "./pages/AddTask"
-import Tasks from "./pages/Tasks"
-import EditTask from "./pages/EditTask"
+import { BrowserRouter, Route, Routes } from "react-router-dom"
+import Home from "./Pages/Home"
+
 import './App.css'
-import { AddTaskContext } from "./context/AddTask"
+import AddTask from "./Pages/AddTasks"
 import { useState } from "react"
-import { Tasksed } from "./Data/Tasks"
+import { Tasks } from "./Data/Tasks"
+import TaskContext from "./Context/TaskContext"
+import EditTask from "./pages/EditTask"
 
 function App() {
-  const [tasks, setTasks] = useState(Tasksed)
-  
-  return (
-    <>
-      <AddTaskContext.Provider value={{ tasks, setTasks }}>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/tasks" element={<Tasks />} />
-            <Route path="/addtask" element={<AddTask />} />
-            <Route path="/edit/:id" element={<EditTask />} />
-          </Routes>
-        </BrowserRouter>
-      </AddTaskContext.Provider>
+    const [TaskList, setTaskList] = useState(Tasks)
+    return (
+        <>
+            <TaskContext.Provider value={{ TaskList, setTaskList }}>
+                <main>
+                    <BrowserRouter>
 
-    </>
-  )
+                        <Routes>
+                            <Route path="/" element={<Home />} />
+                            <Route path="/addtask" element={<AddTask />} />
+                            <Route path="/edittask/:id" element={<EditTask />} />
+                        </Routes>
+                    </BrowserRouter>
+                </main>
+            </TaskContext.Provider>
+
+        </>
+    )
 }
-
 export default App

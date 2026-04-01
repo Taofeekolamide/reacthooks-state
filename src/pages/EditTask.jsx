@@ -1,41 +1,32 @@
+import { useContext, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
-import { supabase } from "../Supabase"
-import { useContext, useEffect, useState } from "react"
-import { AddTaskContext } from "../context/AddTask"
+import TaskContext from "../Context/TaskContext"
 
 function EditTask() {
     const nav = useNavigate()
+    const [newTitle, setNewTitle] = useState("")
     const { id } = useParams()
-    const [title, setTitle] = useState("")
-    const { tasks, setTasks } = useContext(AddTaskContext)
+    const { TaskList, setTaskList } = useContext(TaskContext)
+    const [edit, setEdit] = useState(TaskList.find(item => item.id == id))
 
-    const [toEdit, setToEdit] = useState(tasks.find((item) => (
-        item.id == id
-    )))
-
-    const updateTask = () => {
-        setTasks(tasks.map((item) => (
-            item.id == id ? { ...item, task_title: title } : item
+    const editTask = (e) => {
+        e.preventDefault()
+        setTaskList(TaskList.map(item => (
+            item.id == id ? { ...item, tasktitle: newTitle } : item
         )))
-        alert("Task updated successfully")
-        nav('/tasks')
+        alert("edit successful")
+        nav("/")
     }
-
-    const GoTo = () => {
-        nav('/tasks')
-    }
-
-
-
-
     return (
         <>
-            <div className="main">
-                <h1>Edit Task</h1>
-                <button className="add" onClick={GoTo}>Go to Tasks</button>
-                <input type="text" defaultValue={toEdit.task_title} onChange={(e) => setTitle(e.target.value)} />
-                <button onClick={updateTask}>Update</button>
-            </div>
+            <h1>Edit Task</h1>
+            <form onSubmit={editTask}>
+                <input type="text" defaultValue={edit.tasktitle} onChange={(e) => setNewTitle(e.target.value)} required />
+                <button type="submit">Update</button>
+            </form>
+
+
+            <h1>{id}</h1>
         </>
     )
 }

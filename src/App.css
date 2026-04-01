@@ -90,7 +90,7 @@ nav a {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.main {
+main {
   padding: 40px 0px;
   width: 600px;
   margin: auto;
@@ -125,11 +125,13 @@ nav a {
   margin-bottom: 7px;
   align-items: center;
 }
+
 .icon {
   padding: 3px;
   border-radius: 4px;
   background-color: bisque;
   margin-right: 7px;
+  color: black;
 }
 
 .title {
